@@ -1,0 +1,10 @@
+C:\Users\Davin\source\repos\Project_Alpha\Project_Alpha\obj\Debug\Project_Alpha.MainForm.resources
+C:\Users\Davin\source\repos\Project_Alpha\Project_Alpha\obj\Debug\Project_Alpha.Properties.Resources.resources
+C:\Users\Davin\source\repos\Project_Alpha\Project_Alpha\obj\Debug\Project_Alpha.csproj.GenerateResource.cache
+C:\Users\Davin\source\repos\Project_Alpha\Project_Alpha\obj\Debug\Project_Alpha.csproj.CoreCompileInputs.cache
+C:\Users\Davin\source\repos\Project_Alpha\Project_Alpha\bin\Debug\Project_Alpha.exe.config
+C:\Users\Davin\source\repos\Project_Alpha\Project_Alpha\bin\Debug\Project_Alpha.exe
+C:\Users\Davin\source\repos\Project_Alpha\Project_Alpha\bin\Debug\Project_Alpha.pdb
+C:\Users\Davin\source\repos\Project_Alpha\Project_Alpha\obj\Debug\Project_Alpha.exe
+C:\Users\Davin\source\repos\Project_Alpha\Project_Alpha\obj\Debug\Project_Alpha.pdb
+C:\Users\Davin\source\repos\Project_Alpha\Project_Alpha\obj\Debug\Project_Alpha.csprojAssemblyReference.cache
