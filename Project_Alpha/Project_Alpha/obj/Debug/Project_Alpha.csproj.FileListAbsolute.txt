@@ -8,3 +8,14 @@ C:\Users\Davin\source\repos\Project_Alpha\Project_Alpha\bin\Debug\Project_Alpha.
 C:\Users\Davin\source\repos\Project_Alpha\Project_Alpha\obj\Debug\Project_Alpha.exe
 C:\Users\Davin\source\repos\Project_Alpha\Project_Alpha\obj\Debug\Project_Alpha.pdb
 C:\Users\Davin\source\repos\Project_Alpha\Project_Alpha\obj\Debug\Project_Alpha.csprojAssemblyReference.cache
+C:\Users\hilld\repos\workspace\Project_Alpha\Project_Alpha\Project_Alpha\bin\Debug\App_Data\Database.mdf
+C:\Users\hilld\repos\workspace\Project_Alpha\Project_Alpha\Project_Alpha\bin\Debug\App_Data\Database_log.ldf
+C:\Users\hilld\repos\workspace\Project_Alpha\Project_Alpha\Project_Alpha\bin\Debug\Project_Alpha.exe.config
+C:\Users\hilld\repos\workspace\Project_Alpha\Project_Alpha\Project_Alpha\bin\Debug\Project_Alpha.exe
+C:\Users\hilld\repos\workspace\Project_Alpha\Project_Alpha\Project_Alpha\bin\Debug\Project_Alpha.pdb
+C:\Users\hilld\repos\workspace\Project_Alpha\Project_Alpha\Project_Alpha\obj\Debug\Project_Alpha.csprojAssemblyReference.cache
+C:\Users\hilld\repos\workspace\Project_Alpha\Project_Alpha\Project_Alpha\obj\Debug\Project_Alpha.MainForm.resources
+C:\Users\hilld\repos\workspace\Project_Alpha\Project_Alpha\Project_Alpha\obj\Debug\Project_Alpha.Properties.Resources.resources
+C:\Users\hilld\repos\workspace\Project_Alpha\Project_Alpha\Project_Alpha\obj\Debug\Project_Alpha.csproj.GenerateResource.cache
+C:\Users\hilld\repos\workspace\Project_Alpha\Project_Alpha\Project_Alpha\obj\Debug\Project_Alpha.exe
+C:\Users\hilld\repos\workspace\Project_Alpha\Project_Alpha\Project_Alpha\obj\Debug\Project_Alpha.pdb

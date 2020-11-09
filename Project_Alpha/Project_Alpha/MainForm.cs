@@ -22,36 +22,92 @@ namespace Project_Alpha
       public MainForm()
       {
          InitializeComponent();
-         speechRecognitionEngine = SetLanguage ("en-US");
-         speechRecognitionEngine.SpeechRecognized += new EventHandler<SpeechRecognizedEventArgs>(MainEvent_SpeechRecongnized);
-         LoadGrammerAndCommands();
-         speechRecognitionEngine.SetInputToDefaultAudioDevice();
-         speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
+            try
+            {
+                // Set the language for speech engine
+                speechRecognitionEngine = SetLanguage("en-US");
+                //Event handler for recognized text 
+                speechRecognitionEngine.SpeechRecognized += new EventHandler<SpeechRecognizedEventArgs>(Mainevent_SpeechRecognized);
+                //This is for speak completed event
+                Eva.SpeakCompleted += new EventHandler<SpeakCompletedEventArgs>(speak_completed);
+                //Event for load grammar for speech engine 
+                LoadGrammarAndCommands();
+                // Using the system's default microphone
+                speechRecognitionEngine.SetInputToDefaultAudioDevice();
+                // Start listening 
+                speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
+                Eva.SelectVoiceByHints(VoiceGender.Female);//("Zira");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            //Eva.SelectVoice("Zira");
+           // speechRecognitionEngine = VoiceGender.Female;
+            //speechRecognitionEngine = VoiceGender.Female;
+            //speechRecognitionEngine = VoiceGender.Female;
+            //System.Speech.Synthesis
       }
 
-      private void LoadGrammerAndCommands()
-      {
-         try
-         {
-            string connectionstring = ConfigurationManager.ConnectionStrings["MyDatabase"].ConnectionString;
-            SqlConnection con = new SqlConnection(connectionstring);
-            con.Open();
-            SqlCommand sc = new SqlCommand();
-            sc.Connection = con;
-            sc.CommandText = "SELECT * FROM MyTable";
-            SqlDataReader sdr = sc.ExecuteReader();
-            while (sdr.Read())
+        private void speak_completed(object sender, SpeakCompletedEventArgs e)
+        {
+            //ReadBtn.Enabled = true;
+        }
+
+        private void Mainevent_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        {
+            //System Username 
+            string Name = Environment.UserName;
+            //Recognized Spoken words result is e.Result.Text
+            string speech = e.Result.Text;
+            //Debug_Livetxt.Text += "You said : " + e.Result.Text + "\n";
+            //Switch to e.Result.Text
+            switch (speech)
             {
-               var Loadcmd = sdr["EvaSocialCommands"].ToString();
-               Grammar commandgrammer = new Grammar(new GrammarBuilder(new Choices(Loadcmd)));
-               rec.LoadGrammerAsync(commandgrammer);
+                //Greetings
+                case "hello":
+                    Eva.SpeakAsync("hello Dauvin" + Name);
+                    System.DateTime timenow = System.DateTime.Now;
+                    if (timenow.Hour >= 5 && timenow.Hour < 12)
+                    { Eva.SpeakAsync("Goodmorning " + Name); }
+                    if (timenow.Hour >= 12 && timenow.Hour < 18)
+                    { Eva.SpeakAsync("Good afternoon " + Name); }
+                    if (timenow.Hour >= 18 && timenow.Hour < 24)
+                    { Eva.SpeakAsync("Good evening " + Name); }
+                    if (timenow.Hour < 5)
+                    { Eva.SpeakAsync("Hello " + Name + ", you are still awake you should go to sleep, it's getting late"); }
+                    break;
+                case "what time is it":
+                    System.DateTime now = System.DateTime.Now;
+                    string time = now.GetDateTimeFormats('t')[0];
+                    Eva.SpeakAsync(time);
+                    break;
             }
+        }
+        private void LoadGrammarAndCommands()
+        {
+            try
+            {
+                string connectionstring = ConfigurationManager.ConnectionStrings["MyDatabase"].ConnectionString;
+                SqlConnection con = new SqlConnection(connectionstring);
+                con.Open();
+                SqlCommand sc = new SqlCommand();
+                sc.Connection = con;
+                sc.CommandText = "SELECT * FROM DefaultTable";
+                SqlDataReader sdr = sc.ExecuteReader();
+                while (sdr.Read())
+                {
+                    string Loadcmd = sdr["DefaultCommands"].ToString();
+                    Grammar commandgrammer = new Grammar(new GrammarBuilder(new Choices(Loadcmd)));
+                    speechRecognitionEngine.LoadGrammar(commandgrammer);
+                }
             sdr.Close();
             con.Close();
          }
          catch(Exception ex) 
          {
-            Eva.SpeakAsync("I've detected an invalid entry in your web commands, possibly a blank line. We commands will cease to work until it is fixed." + ex.Message); ;
+                Console.WriteLine("Hello############# {0}", ex);
+                //Eva.SpeakAsync("I've detected an invalid entry in your web commands, possibly a blank line. We commands will cease to work until it is fixed." + ex.Message); ;
          }
       }
 
@@ -65,14 +121,20 @@ namespace Project_Alpha
             case "hello":
                Eva.SpeakAsync("Hello my name is " + name);
                break;
-/*
-            case "What time is it":
-            case "What day is it":
-            case "What is the date":
-            case "What is todays date"
-            case "Who are you"  
-*/
-         }
+            
+            case "Identify":
+               Eva.SpeakAsync("Hello my name is " + name);
+               break;
+            
+           //case default
+                    /*
+                                case "What time is it":
+                                case "What day is it":
+                                case "What is the date":
+                                case "What is todays date"
+                                case "Who are you"  
+                    */
+            }
       }
 
       private SpeechRecognitionEngine SetLanguage(string preferreCulture)
